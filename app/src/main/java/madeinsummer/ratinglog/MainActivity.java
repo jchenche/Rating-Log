@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Content holder Variables (decided not the change the names)
+    // Content holder Variables
     static public SQLiteDatabase myDatabase;
     static public ArrayList<String> products;
     static public ArrayList<String> ratings;
@@ -73,14 +73,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
-
-//        MenuItem item = menu.findItem(R.id.reverse_list);
-//        if (in_reverse == true) {
-//            item.setChecked(true);
-//        } else {
-//            item.setChecked(false);
-//        }
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -91,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.go_to_add_popup:
                 go_to_add_popup();
                 return true;
+
             case R.id.plain:
                 sharedPreferences.edit().putString("theme", "default").apply();
                 setCurrentTheme();
@@ -109,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.view_mode:
-
                 if (in_simple_view) {
                     listView.setAdapter(customAdapter);
                     in_simple_view = false;
@@ -131,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 sortingState = "date";
                 sorting_activator();
                 return true;
-            case R.id.reverse_list:
 
+            case R.id.reverse_list:
                 if (in_reverse == true) {
                     in_reverse = false;
                 } else {
@@ -161,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivity.myDatabase = this.openOrCreateDatabase("Products", MODE_PRIVATE, null);
         DataBaseFunctions.loadFromDatabase(); // Initialize products, ratings, images, dates and loads the table to them
-        listLayout = (RelativeLayout) findViewById(R.id.listLayout);
+        listLayout = (RelativeLayout) findViewById(R.id.listLayout); // For theme backgrounds
 
         // States initializer
         sortingState = "date";
@@ -200,38 +192,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Theme code
-        sharedPreferences = this.getSharedPreferences("com.example.chenjimmy369.ratingcatalog", Context.MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences("madeinsummer.ratinglog", Context.MODE_PRIVATE);
         setCurrentTheme();
 
-
-    }
-
-
-    public void setCurrentTheme() {
-
-        savedTheme = sharedPreferences.getString("theme", "default");
-
-        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView searchTextView = searchView.findViewById(id);
-        searchTextView.setTextSize(20);
-
-        if (savedTheme.equals("default")) {
-            listLayout.setBackgroundResource(R.drawable.white_paper);
-            searchTextView.setTextColor(Color.BLACK);
-        }
-        else if (savedTheme.equals("night")) {
-            listLayout.setBackgroundResource(R.drawable.black_plain);
-            searchTextView.setTextColor(Color.WHITE);
-        }
-        else if (savedTheme.equals("red")) {
-            listLayout.setBackgroundResource(R.drawable.simple_red);
-            searchTextView.setTextColor(Color.WHITE);
-        }
-        else if (savedTheme.equals("blue")) {
-            listLayout.setBackgroundResource(R.drawable.blue);
-            searchTextView.setTextColor(Color.BLACK);
-        }
-        updateListViewDisplay();
     }
 
 
@@ -339,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Only this function calls the other sorting functions
+    // Decide to sort based on which ArrayList
     public void sorting_activator() {
         if (sortingState == "product") {
             sort_by(products);
@@ -356,13 +319,11 @@ public class MainActivity extends AppCompatActivity {
             if (in_reverse) {
                 reverse_arrays();
             }
-        } else {
-            Toast.makeText(this, "Bug in sorting_activator!", Toast.LENGTH_SHORT).show();
         }
         updateListViewDisplay();
     }
 
-
+    // Prepare to sort based on arr
     public void sort_by(ArrayList<String> arr) {
         MainActivity.products = sort_by_second_stage(arr, MainActivity.products);
         MainActivity.ratings = sort_by_second_stage(arr, MainActivity.ratings);
@@ -374,21 +335,22 @@ public class MainActivity extends AppCompatActivity {
     public <T> ArrayList<T> sort_by_second_stage(ArrayList<String> arr, ArrayList<T> target) {
         Map<String, T> hashMap = new HashMap<>();
         for (int i = 0; i < arr.size(); i++) {
-            hashMap.put(arr.get(i) + String.valueOf(i), target.get(i)); // Key is only used for sorting purpose
+            // The key is only used for sorting purpose, String.valueOf(i) is added to make sure every key unique
+            hashMap.put(arr.get(i) + String.valueOf(i), target.get(i));
         }
 
         Map<String, T> treeMap = new TreeMap<>(
                 new Comparator<String>() {
                     @Override
                     public int compare(String s1, String s2) {
-                        return s1.toLowerCase().compareTo(s2.toLowerCase());
+                        return s1.toLowerCase().compareTo(s2.toLowerCase()); // Make the comparison ignore cases
                     }
                 });
         treeMap.putAll(hashMap);
 
         target = new ArrayList<>();
-        for (Map.Entry<String, T> value : treeMap.entrySet()) {
-            target.add(value.getValue());
+        for (Map.Entry<String, T> entry : treeMap.entrySet()) {
+            target.add(entry.getValue());
         }
         return target;
     }
@@ -399,6 +361,34 @@ public class MainActivity extends AppCompatActivity {
         Collections.reverse(MainActivity.ratings);
         Collections.reverse(MainActivity.images);
         Collections.reverse(MainActivity.dates);
+        updateListViewDisplay();
+    }
+
+
+    public void setCurrentTheme() {
+
+        savedTheme = sharedPreferences.getString("theme", "default");
+
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView searchTextView = searchView.findViewById(id);
+        searchTextView.setTextSize(20);
+
+        if (savedTheme.equals("default")) {
+            listLayout.setBackgroundResource(R.drawable.white_paper);
+            searchTextView.setTextColor(Color.BLACK);
+        }
+        else if (savedTheme.equals("night")) {
+            listLayout.setBackgroundResource(R.drawable.black_plain);
+            searchTextView.setTextColor(Color.WHITE);
+        }
+        else if (savedTheme.equals("red")) {
+            listLayout.setBackgroundResource(R.drawable.simple_red);
+            searchTextView.setTextColor(Color.WHITE);
+        }
+        else if (savedTheme.equals("blue")) {
+            listLayout.setBackgroundResource(R.drawable.blue);
+            searchTextView.setTextColor(Color.BLACK);
+        }
         updateListViewDisplay();
     }
 
@@ -425,7 +415,8 @@ public class MainActivity extends AppCompatActivity {
         simpleCustomAdapter.notifyDataSetChanged();
     }
 
-
+    // From StackOverflow
+    // https://stackoverflow.com/questions/25137400/how-to-highlight-the-filtered-text-while-using-searchview-widget-in-android
     public static CharSequence highlightText(String search, String originalText) {
         if (search != null && !search.equalsIgnoreCase("")) {
             // Normalize search and originalText

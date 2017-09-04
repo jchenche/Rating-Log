@@ -40,7 +40,8 @@ public class AboutPage extends AppCompatActivity {
         findViewById(R.id.aboutLayout).setBackgroundResource(R.drawable.simple_wall);
     }
 
-
+    // From StackOverflow
+    // https://stackoverflow.com/questions/10816757/rate-this-app-link-in-google-play-store-app-on-the-phone
     public void go_to_rating_site(View view) {
         Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
         Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
@@ -56,4 +57,5 @@ public class AboutPage extends AppCompatActivity {
                     Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
         }
     }
+
 }

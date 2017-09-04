@@ -24,15 +24,13 @@ public class BigPictureDisplayer extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeByteArray(imageArray, 0, imageArray.length);
         imageView.setImageBitmap(bitmap);
 
-        // Dimension of the layout (needs to be fixed)
+        // Dimension of the layout
         DisplayMetrics dim = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dim);
-        Double width = dim.widthPixels*0.6; // Set the width of screen 70% of the phone
-        Double height = dim.heightPixels*0.6; // Set the height of screen 70% of the phone
+        Double width = dim.widthPixels*0.6; // Set the width of screen 60% of the phone
+        Double height = dim.heightPixels*0.6; // Set the height of screen 60% of the phone
         getWindow().setLayout(width.intValue(), height.intValue());
     }
-
-
 
 
     public void backToListView (View view) {

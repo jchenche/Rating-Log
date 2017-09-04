@@ -27,11 +27,15 @@ public class DataBaseFunctions {
             MainActivity.dates  = new ArrayList<>();
             Cursor c = MainActivity.myDatabase.rawQuery("SELECT * FROM " + table_name, null);
             c.moveToFirst();
+            int name_index = c.getColumnIndex("name");
+            int rate_index = c.getColumnIndex("rate");
+            int datetime_index = c.getColumnIndex("datetime");
+            int image_index = c.getColumnIndex("image");
             while (c.getPosition() < c.getCount()) {
-                MainActivity.products.add(c.getString(c.getColumnIndex("name")));
-                MainActivity.ratings.add(c.getString(c.getColumnIndex("rate")));
-                MainActivity.dates.add(c.getString(c.getColumnIndex("datetime")));
-                MainActivity.images.add(c.getBlob(c.getColumnIndex("image")));
+                MainActivity.products.add(c.getString(name_index));
+                MainActivity.ratings.add(c.getString(rate_index));
+                MainActivity.dates.add(c.getString(datetime_index));
+                MainActivity.images.add(c.getBlob(image_index));
                 c.moveToNext();
             }
         }

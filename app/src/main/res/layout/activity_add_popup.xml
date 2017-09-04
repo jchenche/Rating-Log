@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/simple_wall"
-    tools:context="com.example.chenjimmy369.ratingcatalog.AddPopup"
+    tools:context="madeinsummer.ratinglog.MainActivity"
     android:orientation="vertical">
 
     <TextView

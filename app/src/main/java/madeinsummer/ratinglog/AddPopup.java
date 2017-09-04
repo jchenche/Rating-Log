@@ -31,7 +31,7 @@ public class AddPopup extends AppCompatActivity {
         getSupportActionBar().hide();
         imageView = (ImageView) findViewById(R.id.imageView);
 
-        // Dimension of the layout (needs to be fixed)
+        // Dimension of the layout
         DisplayMetrics dim = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dim);
         Double width = dim.widthPixels*0.8; // Set the width of screen 80% of the phone
@@ -59,7 +59,7 @@ public class AddPopup extends AppCompatActivity {
 
                 imageView = (ImageView) findViewById(R.id.imageView);
                 if (MainActivity.pictureTaken == false) {
-                    imageView.setImageResource(android.R.drawable.ic_menu_gallery);
+                    imageView.setImageResource(android.R.drawable.ic_menu_gallery); // Use the default image if no picture was taken
                 }
                 MainActivity.pictureTaken = false;
                 byte[] image = imageViewToByte(imageView);
@@ -85,12 +85,13 @@ public class AddPopup extends AppCompatActivity {
     }
 
 
+    // From StackOverflow
     public void openCamera(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_REQUEST);
     }
 
-
+    // From StackOverflow
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -104,7 +105,7 @@ public class AddPopup extends AppCompatActivity {
         }
     }
 
-
+    // From StackOverflow
     public byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

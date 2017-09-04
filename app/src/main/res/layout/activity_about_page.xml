@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.chenjimmy369.ratingcatalog.AboutPage">
+    tools:context="madeinsummer.ratinglog.MainActivity">
 
     <ImageView
         android:id="@+id/aboutImage"
@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/blue" />
+        app:srcCompat="@drawable/squared_star" />
 
     <TextView
         android:id="@+id/aboutText"
@@ -29,7 +29,7 @@
         android:layout_toEndOf="@+id/aboutImage"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="Rating Catalog\nVersion 1.0\n\nDevelopers:\nJimmy Chen Chen\nUmutjan Mahmut"
+        android:text="Rating Catalog\nVersion 1.1\n\nDevelopers:\nJimmy Chen Chen\nUmutjan Mahmut"
         android:textSize="15dp" />
 
     <TextView
