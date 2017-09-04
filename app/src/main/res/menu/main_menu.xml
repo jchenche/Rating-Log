@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:Prototype="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Add"
+        Prototype:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_add"
+        android:id="@+id/go_to_add_popup"></item>
+
+
+    <item android:title="View Mode"
+        Prototype:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_view"
+        android:id="@+id/view_mode"></item>
+
+    <item
+        android:id="@+id/themes"
+        android:title="Themes" >
+        <menu>
+            <item
+                android:id="@+id/plain"
+                android:title="Plain (default)"/>
+
+            <item
+                android:id="@+id/red"
+                android:title="Red"/>
+
+            <item
+                android:id="@+id/blue"
+                android:title="Blue"/>
+
+            <item
+                android:id="@+id/nightmode"
+                android:title="Dark"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/sort"
+        android:title="Sort" >
+        <menu>
+            <item
+                android:title="Sort alphabetically"
+                android:id="@+id/sort_alp"/>
+
+            <item
+                android:title="Sort by rating"
+                android:id="@+id/sort_rate"></item>
+            <item
+                android:title="Sort by date (default)"
+                android:id="@+id/sort_date"></item>
+
+        </menu>
+    </item>
+
+    <item
+        android:title="Reverse"
+        android:checkable="true"
+        android:id="@+id/reverse_list"></item>
+
+    <item
+        android:title="Delete All"
+        android:id="@+id/delete_all"></item>
+
+
+    <item
+        android:id="@+id/about"
+        android:title="About"></item>
+
+</menu>

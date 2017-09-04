@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.chenjimmy369.ratingcatalog.AboutPage">
+
+    <ImageView
+        android:id="@+id/aboutImage"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/blue" />
+
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/aboutImage"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/aboutImage"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Rating Catalog\nVersion 1.0\n\nDevelopers:\nJimmy Chen Chen\nUmutjan Mahmut"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/aboutText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aboutImage"
+        android:layout_below="@+id/aboutImage"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="If you like the app, please consider rating"
+        android:layout_toStartOf="@+id/aboutText" />
+
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/aboutText2"
+        android:layout_alignEnd="@+id/aboutText"
+        android:layout_alignStart="@+id/aboutText"
+        android:layout_alignTop="@+id/aboutText2"
+        android:onClick="go_to_rating_site"
+        android:text="Go to rating site" />
+
+    <TextView
+        android:id="@+id/aboutText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aboutText2"
+        android:layout_below="@+id/aboutText2"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Attributes"
+        android:gravity="center"
+        android:layout_alignEnd="@+id/aboutButton" />
+
+    <TextView
+        android:id="@+id/aboutText4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:text="https://www.flickr.com/photos/x1brett/8228396027\nby: Brett Jordan"
+        android:layout_below="@+id/aboutText3"
+        android:layout_alignStart="@+id/aboutText3" />
+
+    <TextView
+        android:id="@+id/aboutText5"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aboutText4"
+        android:layout_below="@+id/aboutText4"
+        android:layout_marginTop="10dp"
+        android:text="https://www.flickr.com/photos/x1brett/8203031074\nFlipped upside down\nby: Brett Jordan" />
+
+
+</RelativeLayout>

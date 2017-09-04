@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/simple_wall"
+    tools:context="com.example.chenjimmy369.ratingcatalog.AddPopup"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/relativeLayout"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal|center"
+        android:text="Add a new product"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:layout_weight="0.10" />
+
+    <EditText
+        android:id="@+id/productNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="0.03"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        tools:text="name of the product" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="249dp"
+        android:layout_height="60sp"
+        android:layout_below="@+id/productNameEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="0.51"
+        android:onClick="openCamera"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.RatingBar"
+        android:stepSize="1"
+        android:layout_below="@+id/iamgeView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_weight="0.02"
+        android:id="@+id/addButton"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="add_product"
+        android:text="add"
+        android:layout_below="@+id/ratingBar"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>
