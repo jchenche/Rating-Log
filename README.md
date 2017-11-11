@@ -10,5 +10,3 @@ Features:
 - Choose different themes
 
 The App is available at Google Play https://play.google.com/store/apps/details?id=madeinsummer.ratinglog
-
-Made by: Jimmy Chen Chen and Umutjan Mahmut
